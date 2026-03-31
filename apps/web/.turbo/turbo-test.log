@@ -1,0 +1,12 @@
+$ vitest run
+
+ RUN  v3.2.4 /Users/leonardo.junior/Documents/projects/game_companion/apps/web
+
+ ✓ src/lib/gameLogic.test.ts (8 tests) 2ms
+ ✓ src/lib/storage.test.ts (7 tests) 3ms
+
+ Test Files  2 passed (2)
+      Tests  15 passed (15)
+   Start at  20:28:34
+   Duration  451ms (transform 38ms, setup 0ms, collect 70ms, tests 5ms, environment 243ms, prepare 56ms)
+

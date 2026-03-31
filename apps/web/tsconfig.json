@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": ["**/*.ts", "**/*.tsx"],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "baseUrl": ".",
+    "paths": {
+      "#/*": ["./src/*"],
+      "@/*": ["./src/*"],
+      "@game-companion/game-domain": ["../../packages/game-domain/src/index.ts"],
+      "@game-companion/game-protocol": ["../../packages/game-protocol/src/index.ts"]
+    },
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["vite/client"]
+  }
+}

@@ -1,0 +1,20 @@
+{
+	"name": "@game-companion/realtime",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "bun run --watch src/main.ts",
+		"build": "bunx tsc -p tsconfig.json --noEmit",
+		"test": "bunx tsc -p tsconfig.json --noEmit",
+		"check": "bunx tsc -p tsconfig.json --noEmit"
+	},
+	"dependencies": {
+		"@game-companion/game-domain": "workspace:*",
+		"@game-companion/game-protocol": "workspace:*"
+	},
+	"devDependencies": {
+		"@types/bun": "latest",
+		"typescript": "^5.7.2"
+	}
+}

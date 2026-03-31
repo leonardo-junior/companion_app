@@ -1,0 +1,11 @@
+$ vitest run
+
+ RUN  v3.2.4 /Users/leonardo.junior/Documents/projects/game_companion/packages/game-protocol
+
+ ✓ tests/protocol.test.ts (3 tests) 3ms
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  20:28:33
+   Duration  390ms (transform 38ms, setup 0ms, collect 63ms, tests 3ms, environment 0ms, prepare 52ms)
+

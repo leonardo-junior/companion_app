@@ -1,0 +1,14 @@
+{
+	"extends": "../../tsconfig.base.json",
+	"include": ["src/**/*.ts", "tests/**/*.ts"],
+	"compilerOptions": {
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"baseUrl": ".",
+		"paths": {
+			"@game-companion/game-domain": ["../game-domain/src/index.ts"]
+		},
+		"lib": ["ES2022"],
+		"types": ["vitest/globals"]
+	}
+}

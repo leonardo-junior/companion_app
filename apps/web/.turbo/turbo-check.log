@@ -1,0 +1,2 @@
+$ bunx tsc -p tsconfig.json --noEmit && biome check
+Checked 25 files in 8ms. No fixes applied.

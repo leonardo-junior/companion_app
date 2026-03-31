@@ -1,0 +1,22 @@
+{
+	"name": "@game-companion/game-protocol",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"scripts": {
+		"build": "bunx tsc -p tsconfig.json --noEmit",
+		"test": "vitest run",
+		"check": "bunx tsc -p tsconfig.json --noEmit"
+	},
+	"dependencies": {
+		"@game-companion/game-domain": "workspace:*",
+		"zod": "^4.3.6"
+	},
+	"devDependencies": {
+		"typescript": "^5.7.2",
+		"vitest": "^3.0.5"
+	}
+}

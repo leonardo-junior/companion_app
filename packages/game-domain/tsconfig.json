@@ -1,0 +1,10 @@
+{
+	"extends": "../../tsconfig.base.json",
+	"include": ["src/**/*.ts", "tests/**/*.ts"],
+	"compilerOptions": {
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"lib": ["ES2022"],
+		"types": ["vitest/globals"]
+	}
+}
