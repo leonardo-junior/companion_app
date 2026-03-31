@@ -1,7 +1,7 @@
-import { Badge } from "./ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { getIcon } from "../lib/icons";
 import type { Card as GameCard, Rarity } from "../lib/storage";
+import { Badge } from "./ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
 const rarityClasses: Record<Rarity, string> = {
 	common:

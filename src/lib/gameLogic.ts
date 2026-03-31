@@ -1,4 +1,4 @@
-import type { Card, Deck, GameSession, PlayCard } from "./storage";
+import type { Card, Deck, GameMode, GameSession, PlayCard } from "./storage";
 
 function createInstanceId(cardId: string, copyIndex: number) {
 	if (
@@ -22,7 +22,11 @@ export function shuffleCards(cards: PlayCard[]): PlayCard[] {
 	return result;
 }
 
-export function createSessionFromDeck(deck: Deck, cards: Card[]): GameSession {
+export function createSessionFromDeck(
+	deck: Deck,
+	cards: Card[],
+	mode: GameMode = "deck",
+): GameSession {
 	const cardLookup = new Map(cards.map((card) => [card.id, card]));
 	const startingCards: PlayCard[] = [];
 
@@ -43,6 +47,7 @@ export function createSessionFromDeck(deck: Deck, cards: Card[]): GameSession {
 
 	return {
 		deckId: deck.id,
+		mode,
 		startingCards,
 		remainingCards: shuffleCards(startingCards),
 		drawnCards: [],
@@ -50,6 +55,27 @@ export function createSessionFromDeck(deck: Deck, cards: Card[]): GameSession {
 }
 
 export function drawCard(session: GameSession): GameSession {
+	if (session.mode === "chaotic") {
+		if (session.startingCards.length === 0) {
+			return session;
+		}
+
+		const randomIndex = Math.floor(
+			Math.random() * session.startingCards.length,
+		);
+		const baseCard = session.startingCards[randomIndex];
+
+		const nextDrawn = {
+			...baseCard,
+			instanceId: createInstanceId(baseCard.id, session.drawnCards.length),
+		};
+
+		return {
+			...session,
+			drawnCards: [nextDrawn, ...session.drawnCards],
+		};
+	}
+
 	const [nextDrawn, ...remainingCards] = session.remainingCards;
 
 	if (!nextDrawn) {

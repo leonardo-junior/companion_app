@@ -79,6 +79,7 @@ describe("storage", () => {
 
 		const session: GameSession = {
 			deckId: "deck-1",
+			mode: "deck",
 			startingCards: [
 				{
 					...cards[0],
@@ -155,6 +156,74 @@ describe("storage", () => {
 		expect(getDecks()[0]?.name).toBe("Good Deck");
 	});
 
+	test("defaults legacy sessions without mode to deck mode", () => {
+		window.localStorage.setItem(
+			StorageKeys.SESSION,
+			JSON.stringify({
+				deckId: "deck-legacy",
+				startingCards: [
+					{
+						id: "card-1",
+						name: "Shield",
+						effect: "Block the next hit.",
+						rarity: "rare",
+						iconId: "GiCheckedShield",
+						instanceId: "start-1",
+					},
+				],
+				remainingCards: [
+					{
+						id: "card-1",
+						name: "Shield",
+						effect: "Block the next hit.",
+						rarity: "rare",
+						iconId: "GiCheckedShield",
+						instanceId: "remain-1",
+					},
+				],
+				drawnCards: [],
+			}),
+		);
+
+		expect(getSession()).toMatchObject({
+			deckId: "deck-legacy",
+			mode: "deck",
+		});
+	});
+
+	test("normalizes invalid stored mode to deck mode", () => {
+		window.localStorage.setItem(
+			StorageKeys.SESSION,
+			JSON.stringify({
+				deckId: "deck-invalid",
+				mode: "not-real",
+				startingCards: [
+					{
+						id: "card-1",
+						name: "Shield",
+						effect: "Block the next hit.",
+						rarity: "rare",
+						iconId: "GiCheckedShield",
+						instanceId: "start-1",
+					},
+				],
+				remainingCards: [
+					{
+						id: "card-1",
+						name: "Shield",
+						effect: "Block the next hit.",
+						rarity: "rare",
+						iconId: "GiCheckedShield",
+						instanceId: "remain-1",
+					},
+				],
+				drawnCards: [],
+			}),
+		);
+
+		expect(getSession()?.mode).toBe("deck");
+	});
+
 	test("syncCardInSession updates matching cards across all session zones", () => {
 		const updatedCard: Card = {
 			id: "card-1",
@@ -166,6 +235,7 @@ describe("storage", () => {
 
 		const session: GameSession = {
 			deckId: "deck-1",
+			mode: "deck",
 			startingCards: [
 				{
 					id: "card-1",

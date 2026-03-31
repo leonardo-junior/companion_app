@@ -29,6 +29,16 @@ export default function Header() {
 						Cards
 					</Link>
 					<Link
+						to="/decks"
+						className={baseNavLinkClassName}
+						activeProps={{
+							className:
+								"rounded-full border border-primary bg-primary text-primary-foreground px-4 py-2 text-sm font-semibold transition",
+						}}
+					>
+						Decks
+					</Link>
+					<Link
 						to="/game"
 						className={baseNavLinkClassName}
 						activeProps={{
@@ -36,7 +46,7 @@ export default function Header() {
 								"rounded-full border border-primary bg-primary text-primary-foreground px-4 py-2 text-sm font-semibold transition",
 						}}
 					>
-						Game
+						Play
 					</Link>
 				</div>
 

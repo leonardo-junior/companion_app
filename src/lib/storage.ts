@@ -25,8 +25,11 @@ export interface PlayCard extends Card {
 	instanceId: string;
 }
 
+export type GameMode = "deck" | "chaotic";
+
 export interface GameSession {
 	deckId: string;
+	mode: GameMode;
 	startingCards: PlayCard[];
 	remainingCards: PlayCard[];
 	drawnCards: PlayCard[];
@@ -184,6 +187,7 @@ function sanitizeSession(value: unknown): GameSession | null {
 	}
 
 	const deckId = asNonEmptyString(value.deckId);
+	const mode = value.mode === "chaotic" ? "chaotic" : "deck";
 	const startingCards = sanitizePlayCards(value.startingCards);
 	const remainingCards = sanitizePlayCards(value.remainingCards);
 	const drawnCards = sanitizePlayCards(value.drawnCards);
@@ -194,6 +198,7 @@ function sanitizeSession(value: unknown): GameSession | null {
 
 	return {
 		deckId,
+		mode,
 		startingCards,
 		remainingCards,
 		drawnCards,
