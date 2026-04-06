@@ -34,6 +34,7 @@ function GamePage() {
 		setAllCards(getCards());
 		setDecks(getDecks());
 		setSession(getSession());
+		// test
 	}, []);
 
 	function startGame(deck: Deck) {
