@@ -13,7 +13,7 @@
     "format": "biome format",
     "lint": "biome lint",
     "check": "biome check",
-    "deploy:prod": "bun run build && bunx wrangler deploy"
+    "deploy": "bun run build && bunx wrangler deploy"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.2.2",
